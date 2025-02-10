@@ -1,0 +1,18 @@
+# Python 関連
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+db.sqlite3
+
+# Node.js / React 関連
+node_modules/
+build/
+dist/
+
+# 環境設定系
+.env
+.DS_Store
+.idea/
+.vscode/
