@@ -32,7 +32,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class Profile(models.Model):
     nickName = models.CharField(max_length=20)
-    preference = models.JSONField(default=dict)
+    preference = models.JSONField(blank=True,default=dict)
     userProfile = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='profile', on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
 
