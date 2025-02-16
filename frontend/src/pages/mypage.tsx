@@ -2,14 +2,14 @@
 
 import React from "react";
 import { auth, provider } from "../firebase";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, User } from "firebase/auth"; // `User` 型をインポート
 import { useAuthState } from "react-firebase-hooks/auth";
-//import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; // `useRouter` のコメントアウトを解除
 import Header from "../components/Header"; // ヘッダーをインポート
 
 const MyPage = () => {
     const [user] = useAuthState(auth);
-    //const router = useRouter();
+    const router = useRouter(); // useRouter をここで取得
 
     return (
         <div>
@@ -19,7 +19,7 @@ const MyPage = () => {
                     <>
                         <h2 className="text-2xl font-bold">マイページ</h2>
                         <UserInfo user={user} />
-                        <SignOutButton />
+                        <SignOutButton router={router} /> {/* `router` を渡す */}
                     </>
                 ) : (
                     <>
@@ -51,10 +51,8 @@ function SignInButton() {
     );
 }
 
-// サインアウト
-function SignOutButton() {
-    const router = useRouter();
-
+// サインアウトボタン
+function SignOutButton({ router }: { router: ReturnType<typeof useRouter> }) {
     const handleSignOut = async () => {
         await auth.signOut();
         router.push("/"); // サインアウト後にホームへ遷移
@@ -68,15 +66,15 @@ function SignOutButton() {
 }
 
 // ユーザー情報を表示
-function UserInfo({ user }: { user: any }) {
+function UserInfo({ user }: { user: User | null }) {
     return (
         <div className="mt-4">
-            {user.photoURL ? (
+            {user?.photoURL ? (
                 <img src={user.photoURL} alt="ユーザー画像" className="w-16 h-16 rounded-full mx-auto" />
             ) : (
                 <p>画像がありません</p>
             )}
-            <p className="mt-2">{user.displayName}</p>
+            <p className="mt-2">{user?.displayName || "匿名ユーザー"}</p>
         </div>
     );
 }
