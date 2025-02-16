@@ -2,6 +2,7 @@ import React from "react";
 import {auth, provider} from "./firebase.tsx";
 import { signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth"
+// import { Header } from "./Header.tsx";
 
 function Home() {
     const [user] = useAuthState(auth)
@@ -10,6 +11,7 @@ function Home() {
         <div>
             {user ? (
                 <>
+                    {/* <Header /> */}
                     <UserInfo />
                     <SignOutButton />
                 </>
@@ -47,6 +49,6 @@ function SignOutButton() {
 
 function UserInfo() {
     return <div>
-        <img src={auth.currentUser.photoURL} alt="" />
+        {/* <img src={auth.currentUser.photoURL}/> */}
     </div>
 }

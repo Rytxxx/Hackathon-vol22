@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import { Search, Map, Calendar } from "lucide-react";
 

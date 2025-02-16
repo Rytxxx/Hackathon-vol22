@@ -2,7 +2,7 @@ import React from "react";
 import { Clock, User } from "lucide-react";
 import { IoIosCar } from "react-icons/io";
 
-const TripPlanner: React.FC = () => {
+export const TripPlanner: React.FC = () => {
   return (
     <div className="min-h-screen bg-orange-100 p-4">
       <header className="bg-orange-500 p-4 flex justify-between items-center text-white">

@@ -1,7 +1,7 @@
 import React from "react";
 import { FaUserCircle } from "react-icons/fa";
 
-const Header: React.FC = () => {
+export const Header = () => {
   return (
     <header className="flex justify-between items-center bg-orange-400 text-white px-6 py-3 border-t-4 border-b-4 border-[#4a90e2]">
       {/* ロゴ */}
